@@ -7,7 +7,6 @@ import 'package:gsy_github_app_flutter/common/ab/provider/user/UserFollowerDbPro
 import 'package:gsy_github_app_flutter/common/ab/provider/user/UserInfoDbProvider.dart';
 import 'package:gsy_github_app_flutter/common/ab/provider/user/UserOrgsDbProvider.dart';
 import 'package:gsy_github_app_flutter/common/config/Config.dart';
-import 'package:gsy_github_app_flutter/common/config/ignoreConfig.dart';
 import 'package:gsy_github_app_flutter/common/dao/DaoResult.dart';
 import 'package:gsy_github_app_flutter/common/local/LocalStorage.dart';
 import 'package:gsy_github_app_flutter/common/model/Notification.dart';
@@ -26,6 +25,7 @@ class UserDao {
     var base64Str = base64.encode(bytes);
     if (Config.DEBUG) {
       print("base64Str login " + base64Str);
+      print("login: type:"+type);
     }
     await LocalStorage.save(Config.USER_NAME_KEY, userName);
     await LocalStorage.save(Config.USER_BASIC_CODE, base64Str);
@@ -33,8 +33,9 @@ class UserDao {
     Map requestParams = {
       "scopes": ['user', 'repo', 'gist', 'notifications'],
       "note": "admin_script",
-      "client_id": NetConfig.CLIENT_ID,
-      "client_secret": NetConfig.CLIENT_SECRET
+//      "client_id": NetConfig.CLIENT_ID,
+      "client_id": "4242df9f5bab9ba30800",
+      "client_secret": "dbadf492a5f9e4fbae48d26e9faf23d0eb2a8e43"
     };
     HttpManager.clearAuthorization();
 
